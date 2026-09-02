@@ -28,6 +28,7 @@ function dateKey(value){const d=parseGarminDate(value);return d?d.getTime():0}
 function formatTime(sec){sec=Math.round(sec||0);const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;return h?`${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`:`${m}:${String(s).padStart(2,"0")}`}
 function paceString(secPerKm){if(!secPerKm||!isFinite(secPerKm))return"—";const m=Math.floor(secPerKm/60),s=Math.round(secPerKm%60);return`${m}:${String(s).padStart(2,"0")}`}
 function parseCSV(text){
+  text = String(text).replace(/^\\uFEFF/, "");
   const rows=[];let row=[],field="",quoted=false;
   for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];
     if(c==='"'&&quoted&&n==='"'){field+='"';i++;continue}
