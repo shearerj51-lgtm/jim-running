@@ -16,7 +16,7 @@ function parseTime(value){
 function parseGarminDate(value){
   if(!value)return null;
   const s=String(value).trim();
-  const m=s.match(/^(\\d{1,2})\\/(\\d{1,2})\\/(\\d{4})(?:\\s+(\\d{1,2}):(\\d{2})(?::(\\d{2}))?)?/);
+  const m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?/);
   if(m){
     const [,dd,mm,yyyy,hh="12",min="00",ss="00"]=m;
     return new Date(Number(yyyy),Number(mm)-1,Number(dd),Number(hh),Number(min),Number(ss));
