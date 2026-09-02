@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<title>Jim Running</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+<header class="topbar"><div><div class="eyebrow">JIM // RUNNING</div><h1 id="periodTitle">RUNNING</h1></div><button id="addRun" class="round">+</button></header>
+<section class="hero"><div class="eyebrow heroEyebrow">THIS MONTH</div><div><span id="monthKm" class="heroNumber">0.0</span><span class="heroUnit">KM</span></div><div class="heroMeta"><span id="monthRuns">0 RUNS</span><span>•</span><span id="monthPace">— /KM</span></div><div class="progress"><div id="goalFill"></div></div><div class="goalLine"><span id="goalLabel">0 / 80 km</span><span id="goalPct">0%</span></div></section>
+<section class="grid">
+<div class="stat"><span>THIS WEEK</span><b id="weekKm">0.0 km</b><small id="weekCount">0 runs</small></div>
+<div class="stat"><span>2026 YTD</span><b id="ytdKm">0.0 km</b><small id="ytdCount">0 runs</small></div>
+<div class="stat"><span>LONGEST</span><b id="longestKm">0.0 km</b><small id="longestWhen">—</small></div>
+<div class="stat"><span>AVG HR</span><b id="avgHr">—</b><small>this month</small></div>
+</section>
+<section class="card"><div class="sectionHead"><div><div class="eyebrow">TREND</div><h2>Distance by month</h2></div><span class="muted">2026</span></div><canvas id="distanceChart" height="210"></canvas></section>
+<section class="card"><div class="sectionHead"><div><div class="eyebrow">PACE</div><h2>Recent runs</h2></div><span class="muted">min / km</span></div><canvas id="paceChart" height="210"></canvas></section>
+<section class="card"><div class="sectionHead"><div><div class="eyebrow">ACTIVITY LOG</div><h2>Recent runs</h2></div><button id="manage" class="linkBtn">Manage</button></div><div id="runList"></div></section>
+<section id="managePanel" class="card" hidden><div class="sectionHead"><div><div class="eyebrow">DATA</div><h2>Manage data</h2></div><button id="closeManage" class="linkBtn">Close</button></div><p class="mutedText">Garmin runs come from Activities.csv. Manual runs are saved on this device. You can also load a fresh Garmin CSV directly here.</p><div class="actions"><label class="secondary">Load Garmin CSV<input id="csvFile" type="file" accept=".csv,text/csv"></label><button id="exportCsv" class="secondary">Export combined CSV</button></div><p id="dataStatus" class="status"></p></section>
+<footer><span>Garmin + manual activities</span><span id="updated"></span></footer>
+</main>
+<div id="modal" class="overlay" hidden><div class="modal"><div class="sectionHead"><div><div class="eyebrow">NEW ACTIVITY</div><h2>Add a run</h2></div><button id="closeModal" class="round close">×</button></div><form id="runForm">
+<label>Date<input id="runDate" type="date" required></label><label>Distance (km)<input id="runDistance" type="number" min="0.01" step="0.01" required></label><label>Time<input id="runTime" type="text" placeholder="32:15" required></label><div class="two"><label>Avg HR<input id="runHr" type="number" min="1" max="250" placeholder="Optional"></label><label>Cadence<input id="runCadence" type="number" min="1" max="300" placeholder="Optional"></label></div><label>Title<input id="runTitle" type="text" placeholder="Easy 5K"></label><button class="primary" type="submit">Add activity</button></form></div></div>
+<script src="script.js"></script>
+</body></html>
